@@ -129,26 +129,26 @@ function adicionarBiblioteca(id) {
     deletelivro(id);
 }
 
-function renderTable() {
-    const tableBody = document.getElementById('itemDiv');
-    tableBody.innerHTML = '';
-    books.forEach(book => {
-        const row = `
-                    <div class="rectangle-21-325">
-                        <img img src="${book.capa}" alt="${book.titulo}" class="img325">
-                        <div class="group-168"> 
-                            <p class="title">${book.titulo}</p>
-                            <p class="tipo">Categoria: </p>
-                            <p class="categoria">${book.categoria}</p>
-                        </div>
-                        <button type="button" class="carrinho"><i class="bi bi-cart3"></i><span style="margin-right: 10px;"></span>Comprar</button>
-                        <button type="button" class="edit" onclick="openbook('edit', '${book.id}', '${book.capa}', '${book.titulo}', '${book.categoria}', '${book.formato}','${book.local}', '${book.linkagem}')"><span class="tooltip"></span><i class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="ad-biblioteca" onclick="adicionarBiblioteca(${book.id})"><span class="tooltip"></span><i class="fa-solid fa-book"></i></button>
-                        <button type="button" class="trash" onclick="deletelivro(${book.id})"><span class="tooltip"></span><i class="bi bi-trash-fill"></i></button>
-                    </div>`;
-        tableBody.insertAdjacentHTML('beforeend', row);
-    });
-}
+// function renderTable() {
+//     const tableBody = document.getElementById('itemDiv');
+//     tableBody.innerHTML = '';
+//     books.forEach(book => {
+//         const row = `
+//                     <div class="rectangle-21-${book.id}">
+//                         <img img src="${book.capa}" alt="${book.titulo}" class="img325">
+//                         <div class="group-168"> 
+//                             <p class="title">${book.titulo}</p>
+//                             <p class="tipo">Categoria: </p>
+//                             <p class="categoria">${book.categoria}</p>
+//                         </div>
+//                         <button type="button" class="carrinho"><i class="bi bi-cart3"></i><span style="margin-right: 10px;"></span>Comprar</button>
+//                         <button type="button" class="edit" onclick="openbook('edit', '${book.id}', '${book.capa}', '${book.titulo}', '${book.categoria}', '${book.formato}','${book.local}', '${book.linkagem}')"><span class="tooltip"></span><i class="bi bi-pencil-square"></i></button>
+//                         <button type="button" class="ad-biblioteca" onclick="adicionarBiblioteca(${book.id})"><span class="tooltip"></span><i class="fa-solid fa-book"></i></button>
+//                         <button type="button" class="trash" onclick="deletelivro(${book.id})"><span class="tooltip"></span><i class="bi bi-trash-fill"></i></button>
+//                     </div>`;
+//         tableBody.insertAdjacentHTML('beforeend', row);
+//     });
+// }
 
 function selectFormat(format) {
     document.getElementById('formatoInput').value = format;
