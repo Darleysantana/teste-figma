@@ -6,6 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
         openbook('create');
         document.getElementById('novolivro').style.display = 'block';
     };
+    document.getElementById('edit').onclick = function() {
+        openbook('edit', '${book.id}', '${book.capa}', '${book.titulo}', '${book.categoria}', '${book.formato}','${book.local}', '${book.linkagem}');
+        document.getElementById('novolivro').style.display = 'block';
+    };
 
     // Fechar o popup
     document.querySelector('.close').onclick = function() {
@@ -35,33 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let currentIndex = -1;
 let books = [
-    {
-        id: 1,
-        capa: './IMG/11.png',
-        titulo: 'Como fazer amigos e influenciar pessoas',
-        categoria: 'Desenvolvimento pessoal',
-        formato: 'Digital',
-        local: 'Lista de Desejos',
-        linkagem: 'google.com'
-    },
-    {
-        id: 2,
-        capa: './IMG/13.png',
-        titulo: 'O almanaque de naval ravikant',
-        categoria: 'Desenvolvimento pessoal',
-        formato: 'Digital',
-        local: 'Lista de Desejos',
-        linkagem: 'google.com'
-    },
-    {
-        id: 3,
-        capa: './IMG/12.png',
-        titulo: 'Pai Rico Pai Pobre',
-        categoria: 'Desenvolvimento pessoal',
-        formato: 'Digital',
-        local: 'Lista de Desejos',
-        linkagem: 'google.com'
-    }
+    
 ];
 
 function openbook(action, id = '', capa = '', titulo = '', categoria = '', formato = '', local = '', linkagem = '') {
@@ -151,16 +129,6 @@ function adicionarBiblioteca(id) {
     deletelivro(id);
 }
 
-function colorbackground(id) {
-    const color = document.getElementById('itemTable');
-
-    if (id % 2 === 0) {
-        color.style.background = '#252525';
-    } else {
-        color.style.background = '#303030';
-    }
-}
-
 function renderTable() {
     const tableBody = document.getElementById('itemTable');
     tableBody.innerHTML = '';
@@ -182,33 +150,6 @@ function renderTable() {
             </tr>`;
         tableBody.insertAdjacentHTML('beforeend', row);
     });
-
-    // Adiciona evento de hover para mostrar os cargos ao passar o mouse
-    const popup = document.getElementById('popup');
-    tableBody.querySelectorAll('.hover-target').forEach(td => {
-        td.addEventListener('mouseover', () => {
-            const info = td.getAttribute('data-info');
-            popup.textContent = info;
-            popup.style.display = 'block';
-
-            const rect = td.getBoundingClientRect();
-            popup.style.left = `${rect.left + window.scrollX}px`;
-            popup.style.top = `${rect.bottom + window.scrollY}px`;
-        });
-
-        td.addEventListener('mouseout', () => {
-            popup.style.display = 'none';
-        });
-    });
-}
-
-function alternarBackground() {
-    var elemento = document.querySelector('.group-168');
-    if (elemento.style.backgroundColor === 'rgb(37, 37, 37)' || elemento.style.backgroundColor === '#252525') {
-        elemento.style.backgroundColor = '#303030';
-    } else {
-        elemento.style.backgroundColor = '#252525';
-    }
 }
 
 function selectFormat(format) {
